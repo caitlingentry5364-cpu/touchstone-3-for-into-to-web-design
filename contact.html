@@ -5,23 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Twin Cities Animal Rescue | Contact</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="rescue-logo_c.png" alt="Twin Cities Animal Rescue logo"><h1>Twin Cities Animal Rescue</h1></a>
-      <nav aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav>
-    </div>
-  </header>
+  <header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><img src="rescue-logo_c.png" alt="Twin Cities Animal Rescue logo"><h1>Twin Cities Animal Rescue</h1></a><nav aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav></div></header>
   <main id="main-content">
     <section class="hero"><div class="container"><h2>Get Involved</h2><p>Tell us if you are interested in volunteering, fostering, or learning more about adoption.</p></div></section>
     <section><div class="container">
       <h2>Volunteer or Foster Interest Form</h2>
       <p>Use this form to tell us how you would like to help. We can follow up with more information about volunteering, fostering, or adoption.</p>
-      <form action="#" method="post">
-        <fieldset><legend>Your Contact Information</legend><p><label for="name">Name:</label><input type="text" id="name" name="name" required minlength="2"></p><p><label for="email">Email:</label><input type="email" id="email" name="email" required></p></fieldset>
-        <fieldset><legend>Your Interest and Availability</legend><p><label for="interest">Interest type:</label><select id="interest" name="interest" required><option value="">Choose one</option><option value="volunteer">Volunteer</option><option value="foster">Foster</option><option value="adoption">Adoption information</option></select></p><p><label for="availability">Availability:</label><input type="text" id="availability" name="availability" required placeholder="Example: weekends or weekday evenings"></p><p><label for="experience">Experience with pets:</label><textarea id="experience" name="experience" rows="4" required></textarea></p><p><label for="message">Short message:</label><textarea id="message" name="message" rows="4" maxlength="500" required></textarea></p><button type="submit">Send Interest Form</button></fieldset>
+      <div class="interactive-panel" aria-live="polite">
+        <h3>Choose how you want to help</h3>
+        <p>Select an interest type in the form below. The page will immediately show more information and a suggested next step.</p>
+        <div id="interest-details" hidden></div>
+        <p id="saved-note" class="saved-note"></p>
+      </div>
+
+      <form id="interest-form" action="#" method="post" novalidate>
+        <fieldset>
+          <legend>Your Contact Information</legend>
+          <div class="form-row"><label for="name">Name:</label><input type="text" id="name" name="name" minlength="2" aria-describedby="name-error"><p id="name-error" class="error-message" aria-live="polite"></p></div>
+          <div class="form-row"><label for="email">Email:</label><input type="email" id="email" name="email" aria-describedby="email-error"><p id="email-error" class="error-message" aria-live="polite"></p></div>
+        </fieldset>
+        <fieldset>
+          <legend>Your Interest and Availability</legend>
+          <div class="form-row"><label for="interest">Interest type:</label><select id="interest" name="interest" aria-describedby="interest-error"><option value="">Choose one</option><option value="volunteer">Volunteer</option><option value="foster">Foster</option><option value="adoption">Adoption information</option></select><p id="interest-error" class="error-message" aria-live="polite"></p></div>
+          <div class="form-row"><label for="availability">Availability:</label><input type="text" id="availability" name="availability" placeholder="Example: weekends or weekday evenings" aria-describedby="availability-error"><p id="availability-error" class="error-message" aria-live="polite"></p></div>
+          <div class="form-row"><label for="experience">Experience with pets:</label><textarea id="experience" name="experience" rows="4"></textarea></div>
+          <div class="form-row"><label for="message">Short message:</label><textarea id="message" name="message" rows="4" maxlength="500"></textarea></div>
+          <button type="submit">Send Interest Form</button>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </fieldset>
       </form>
     </div></section>
     <section><div class="container info-grid"><article class="card"><h2>Service Area</h2><p>We serve the Twin Cities area and nearby communities through adoption, foster, volunteer, and community support programs.</p></article><article class="card"><h2>Office Hours</h2><p>Monday-Friday: 9:00 a.m.-5:00 p.m.<br>Saturday: 10:00 a.m.-2:00 p.m.<br>Sunday: Closed</p></article></div></section>
